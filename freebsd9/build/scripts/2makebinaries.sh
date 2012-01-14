@@ -63,7 +63,7 @@ fi
         tar -zxf $MW_BUILDPATH/freebsd9/build/local-sources/ip_fil4.1.34.tar.gz
 		cd ip_fil4.1.34
         patch < $MW_BUILDPATH/freebsd9/build/patches/user/ipfstat.c.patch
-		make freebsd9
+		make freebsd8
 		install -s BSD/FreeBSD-8.*-$MW_ARCH/{ipf,ipfs,ipfstat,ipmon,ipnat} $MW_BUILDPATH/m0n0fs/sbin
 
 
