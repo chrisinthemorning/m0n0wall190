@@ -71,7 +71,7 @@ ports-ports-mgmt
 #ports-print
 #ports-russian
 #ports-science
-#ports-security
+ports-security
 ports-shells
 ports-sysutils
 ports-textproc
