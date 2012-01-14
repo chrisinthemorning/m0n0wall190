@@ -59,9 +59,9 @@ fi
         install -s ez-ipupdate $MW_BUILDPATH/m0n0fs/usr/local/bin/
 # ipfilter userland tools (newer version than included with FreeBSD)
 		cd $MW_BUILDPATH/tmp
-		rm -Rf ip_fil4.1.35
+		rm -Rf ipfilter
         tar -zxf $MW_BUILDPATH/freebsd9/build/local-sources/ip_fil4.1.35.tar.gz
-		cd ip_fil4.1.34
+		cd ipfilter
         patch < $MW_BUILDPATH/freebsd9/build/patches/user/ipfstat.c.patch
 		make freebsd8
 		install -s BSD/FreeBSD-9.*-$MW_ARCH/{ipf,ipfs,ipfstat,ipmon,ipnat} $MW_BUILDPATH/m0n0fs/sbin
