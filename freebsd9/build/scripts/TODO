@@ -2,7 +2,7 @@ new 90 areas
 
 new ipfilter
 
-http://ipfilter.cvs.sourceforge.net/viewvc/ipfilter/ipfilter/?view=tar&pathrev=v4-1-35
+	ipfilter 4.1.35 taken from http://ipfilter.cvs.sourceforge.net/viewvc/ipfilter/ipfilter/?view=tar&pathrev=v4-1-35
 
 use cvsup for ports
 
