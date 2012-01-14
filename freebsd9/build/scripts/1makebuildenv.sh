@@ -74,5 +74,9 @@ fi
 	
 # create missing etc files
 	tar -xzf $MW_BUILDPATH/freebsd9/build/files/etcadditional.tgz -C $MW_BUILDPATH/m0n0fs/
+	
+# updating ports
+	csup $MW_BUILDPATH/freebsd9/build/scripts/ports-supfile
+
 
 echo "Finished Stage 1"
