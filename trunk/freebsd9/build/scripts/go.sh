@@ -19,7 +19,7 @@ if  ( $status != 1 ) then
 	echo "Found existing working copy"
 else
 	echo "No working copy found; checking out current version from repository"
-	/usr/local/bin/svn checkout http://svn.m0n0.ch/wall/branches/freebsd9
+	/usr/local/bin/svn checkout http://m0n0wall190.googlecode.com/svn/trunk/freebsd9
 endif
 
 cd freebsd9
