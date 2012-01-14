@@ -1,0 +1,89 @@
+# $FreeBSD: release/9.0.0/share/examples/cvsup/ports-supfile 219858 2011-03-22 04:31:35Z glebius $
+*default host=cvsup.ie.FreeBSD.org
+*default base=/var/db
+*default prefix=/usr
+*default release=cvs tag=. date=2012.01.14.01.00.00
+*default delete use-rel-suffix
+
+# If you seem to be limited by CPU rather than network or disk bandwidth, try
+# commenting out the following line.  (Normally, today's CPUs are fast enough
+# that you want to run compression.)
+*default compress
+
+## Ports Collection.
+#
+# The easiest way to get the ports tree is to use the "ports-all"
+# mega-collection.  It includes all of the individual "ports-*"
+# collections,
+#ports-all
+
+# These are the individual collections that make up "ports-all".  If you
+# use these, be sure to comment out "ports-all" above.
+#
+# Be sure to ALWAYS cvsup the ports-base collection if you use any of the
+# other individual collections below. ports-base is a mandatory collection
+# for the ports collection, and your ports may not build correctly if it
+# is not kept up to date.
+ports-base
+#ports-accessibility
+#ports-arabic
+ports-archivers
+#ports-astro
+#ports-audio
+#ports-benchmarks
+#ports-biology
+#ports-cad
+#ports-chinese
+ports-comms
+#ports-converters
+#ports-databases
+#ports-deskutils
+ports-devel
+ports-dns
+#ports-editors
+#ports-emulators
+#ports-finance
+#ports-french
+#ports-ftp
+#ports-games
+#ports-german
+#ports-graphics
+#ports-hebrew
+#ports-hungarian
+#ports-irc
+#ports-japanese
+#ports-java
+#ports-korean
+#ports-lang
+#ports-mail
+#ports-math
+ports-misc
+#ports-multimedia
+ports-net
+#ports-net-im
+ports-net-mgmt
+#ports-net-p2p
+#ports-news
+#ports-palm
+#ports-polish
+ports-ports-mgmt
+#ports-portuguese
+#ports-print
+#ports-russian
+#ports-science
+#ports-security
+ports-shells
+ports-sysutils
+ports-textproc
+#ports-ukrainian
+#ports-vietnamese
+ports-www
+#ports-x11
+#ports-x11-clocks
+#ports-x11-drivers
+#ports-x11-fm
+#ports-x11-fonts
+#ports-x11-servers
+#ports-x11-themes
+#ports-x11-toolkits
+#ports-x11-wm
