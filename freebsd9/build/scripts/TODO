@@ -1,3 +1,11 @@
+new 90 areas
+
+new ipfilter
+
+http://ipfilter.cvs.sourceforge.net/viewvc/ipfilter/ipfilter/?view=tar&pathrev=v4-1-35
+
+use cvsup for ports
+
 critical areas
 	syslinux build needs rework for symlinks not being supported on FAT32 (mac os supports symlinks on fat32 and there is a patch 
 		for linux)  .htpasswd, config.xml , etc/hosts and /etc/resolv.conf are broken.  It may be ok to just use them without the symlink
