@@ -17,7 +17,7 @@ fi
 		mkdir -p $MW_BUILDPATH/tmp/ports/db
 		export PORT_DBDIR=$MW_BUILDPATH/tmp/ports/db
 		
-		for portoptf in $MW_BUILDPATH/freebsd8/build/files/portoptions/* ; do
+		for portoptf in $MW_BUILDPATH/freebsd9/build/files/portoptions/* ; do
 			port=${portoptf##*/}
 			mkdir -p $PORT_DBDIR/$port
 			cp $portoptf $PORT_DBDIR/$port/options
@@ -31,9 +31,9 @@ fi
 # php 4.4.9
 		cd $MW_BUILDPATH/tmp
 		rm -Rf php-4.4.9
-        tar -zxf $MW_BUILDPATH/freebsd8/build/local-sources/php-4.4.9.tar.bz2
+        tar -zxf $MW_BUILDPATH/freebsd9/build/local-sources/php-4.4.9.tar.bz2
         cd php-4.4.9/ext/
-		tar -zxf $MW_BUILDPATH/freebsd8/build/local-sources/radius-1.2.5.tgz
+		tar -zxf $MW_BUILDPATH/freebsd9/build/local-sources/radius-1.2.5.tgz
         mv radius-1.2.5 radius
         cd ..
         ./buildconf --force
@@ -43,27 +43,27 @@ fi
 # mini httpd
 		cd $MW_BUILDPATH/tmp
 		rm -Rf mini_httpd-1.19
-        tar -zxf $MW_BUILDPATH/freebsd8/build/local-sources/mini_httpd-1.19.tar.gz
+        tar -zxf $MW_BUILDPATH/freebsd9/build/local-sources/mini_httpd-1.19.tar.gz
         cd mini_httpd-1.19/
-        patch < $MW_BUILDPATH/freebsd8/build/patches/packages/mini_httpd.patch
+        patch < $MW_BUILDPATH/freebsd9/build/patches/packages/mini_httpd.patch
         make
         install -s mini_httpd $MW_BUILDPATH/m0n0fs/usr/local/sbin
 # ezipupdate
         cd $MW_BUILDPATH/tmp
 		rm -Rf ez-ipupdate-3.0.11b8
-        tar -zxf $MW_BUILDPATH/freebsd8/build/local-sources/ez-ipupdate-3.0.11b8.tar.gz
+        tar -zxf $MW_BUILDPATH/freebsd9/build/local-sources/ez-ipupdate-3.0.11b8.tar.gz
         cd ez-ipupdate-3.0.11b8
-        patch < $MW_BUILDPATH/freebsd8/build/patches/packages/ez-ipupdate.c.patch
+        patch < $MW_BUILDPATH/freebsd9/build/patches/packages/ez-ipupdate.c.patch
         ./configure
         make
         install -s ez-ipupdate $MW_BUILDPATH/m0n0fs/usr/local/bin/
 # ipfilter userland tools (newer version than included with FreeBSD)
 		cd $MW_BUILDPATH/tmp
 		rm -Rf ip_fil4.1.34
-        tar -zxf $MW_BUILDPATH/freebsd8/build/local-sources/ip_fil4.1.34.tar.gz
+        tar -zxf $MW_BUILDPATH/freebsd9/build/local-sources/ip_fil4.1.34.tar.gz
 		cd ip_fil4.1.34
-        patch < $MW_BUILDPATH/freebsd8/build/patches/user/ipfstat.c.patch
-		make freebsd8
+        patch < $MW_BUILDPATH/freebsd9/build/patches/user/ipfstat.c.patch
+		make freebsd9
 		install -s BSD/FreeBSD-8.*-$MW_ARCH/{ipf,ipfs,ipfstat,ipmon,ipnat} $MW_BUILDPATH/m0n0fs/sbin
 
 
@@ -75,7 +75,7 @@ fi
         install -s $WRKDIRPREFIX/usr/ports/net/isc-dhcp41-relay/work/dhcp-*/relay/dhcrelay $MW_BUILDPATH/m0n0fs/usr/local/sbin/
 # ISC dhcp-server
         cd /usr/ports/net/isc-dhcp41-server
-		cp $MW_BUILDPATH/freebsd8/build/patches/packages/isc-dhcpd/patch-server.db.c files/
+		cp $MW_BUILDPATH/freebsd9/build/patches/packages/isc-dhcpd/patch-server.db.c files/
         make
         install -s $WRKDIRPREFIX/usr/ports/net/isc-dhcp41-server/work/dhcp-*/server/dhcpd $MW_BUILDPATH/m0n0fs/usr/local/sbin/
 		rm files/patch-server.db.c
@@ -89,7 +89,7 @@ fi
         install -s $WRKDIRPREFIX/usr/ports/dns/dnsmasq/work/dnsmasq-*/src/dnsmasq $MW_BUILDPATH/m0n0fs/usr/local/sbin/
 # ipsec-tools
         cd /usr/ports/security/ipsec-tools
-		patch < $MW_BUILDPATH/freebsd8/build/patches/packages/ipsec-tools.Makefile.patch
+		patch < $MW_BUILDPATH/freebsd9/build/patches/packages/ipsec-tools.Makefile.patch
         make
         install -s $WRKDIRPREFIX/usr/ports/security/ipsec-tools/work/ipsec-tools-*/src/racoon/.libs/racoon $MW_BUILDPATH/m0n0fs/usr/local/sbin
         install -s $WRKDIRPREFIX/usr/ports/security/ipsec-tools/work/ipsec-tools-*/src/libipsec/.libs/libipsec.so.0 $MW_BUILDPATH/m0n0fs/usr/local/lib
@@ -102,7 +102,7 @@ fi
 # sixxs-aiccu		
 		cd /usr/ports/net/sixxs-aiccu
 		cp -p Makefile Makefile.orig
-		patch < $MW_BUILDPATH/freebsd8/build/patches/packages/sixxs-aiccu.Makefile.patch
+		patch < $MW_BUILDPATH/freebsd9/build/patches/packages/sixxs-aiccu.Makefile.patch
         make
 		install -s $WRKDIRPREFIX/usr/ports/net/sixxs-aiccu/work/aiccu/unix-console/aiccu $MW_BUILDPATH/m0n0fs/usr/local/sbin/sixxs-aiccu
 		mv Makefile.orig Makefile
@@ -122,7 +122,7 @@ fi
 
 # make m0n0wall tools and binaries
         cd $MW_BUILDPATH/tmp
-        cp -r $MW_BUILDPATH/freebsd8/build/tools .
+        cp -r $MW_BUILDPATH/freebsd9/build/tools .
         cd tools
         gcc -o stats.cgi stats.c
         gcc -o minicron minicron.c
@@ -144,7 +144,7 @@ fi
 # ucd-snmp
         cd $MW_BUILDPATH/tmp
 		rm -Rf ucd-snmp-4.2.7.1
-        tar -zxf $MW_BUILDPATH/freebsd8/build/local-sources/ucd-snmp-4.2.7.1.tar.gz
+        tar -zxf $MW_BUILDPATH/freebsd9/build/local-sources/ucd-snmp-4.2.7.1.tar.gz
         cd ucd-snmp-4.2.7.1
         ./configure  --without-openssl --disable-debugging --enable-static \
         --enable-mini-agent --disable-privacy --disable-testing-code \
@@ -152,8 +152,8 @@ fi
         '--with-out-transports=TCP Unix' \
         '--with-mib-modules=mibII/interfaces mibII/var_route ucd-snmp/vmstat_freebsd2' \
 		--with-defaults
-		patch < $MW_BUILDPATH/freebsd8/build/patches/packages/ucd-snmp.patch
-		patch < $MW_BUILDPATH/freebsd8/build/patches/packages/ucd-snmp.config.h.patch
+		patch < $MW_BUILDPATH/freebsd9/build/patches/packages/ucd-snmp.patch
+		patch < $MW_BUILDPATH/freebsd9/build/patches/packages/ucd-snmp.config.h.patch
 	    make
         install -s agent/snmpd $MW_BUILDPATH/m0n0fs/usr/local/sbin
 

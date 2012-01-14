@@ -66,9 +66,9 @@ makeimage() {
 	cp $MW_BUILDPATH/tmp/mfsroot-$PLATFORM.gz /mnt/mfsroot.gz
 	mkdir -p /mnt/boot/kernel
 	cp /boot/loader /mnt/boot
-	cp $MW_BUILDPATH/freebsd8/build/boot/$PLATFORM/loader.rc /mnt/boot
-	if [ -r $MW_BUILDPATH/freebsd8/build/boot/$PLATFORM/boot.config ]; then
-		cp $MW_BUILDPATH/freebsd8/build/boot/$PLATFORM/boot.config /mnt
+	cp $MW_BUILDPATH/freebsd9/build/boot/$PLATFORM/loader.rc /mnt/boot
+	if [ -r $MW_BUILDPATH/freebsd9/build/boot/$PLATFORM/boot.config ]; then
+		cp $MW_BUILDPATH/freebsd9/build/boot/$PLATFORM/boot.config /mnt
 	fi
 	if [ $MW_ARCH = "i386" ]; then
 		cp $MW_BUILDPATH/tmp/acpi.ko /mnt/boot/kernel
@@ -101,7 +101,7 @@ makeimage() {
 		cp $MW_BUILDPATH/tmp/acpi.ko $MW_BUILDPATH/tmp/cdroot/boot/kernel
 	fi
 	cp /boot/{cdboot,loader} $MW_BUILDPATH/tmp/cdroot/boot
-	cp $MW_BUILDPATH/freebsd8/build/boot/generic-pc/loader.rc $MW_BUILDPATH/tmp/cdroot/boot
+	cp $MW_BUILDPATH/freebsd9/build/boot/generic-pc/loader.rc $MW_BUILDPATH/tmp/cdroot/boot
 	cp kernel.gz $MW_BUILDPATH/tmp/cdroot/
 	cp mfsroot-generic-pc-cdrom.gz $MW_BUILDPATH/tmp/cdroot/mfsroot.gz
 	cp $MW_BUILDPATH/images/generic-pc-$VERSION.img $MW_BUILDPATH/tmp/cdroot/firmware.img

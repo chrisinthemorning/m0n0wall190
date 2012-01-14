@@ -29,11 +29,11 @@ fi
 	mkdir -p etc/rc.d/ bin cf conf.default dev etc ftmp mnt proc root sbin tmp var libexec lib usr/bin usr/lib usr/libexec usr/local usr/sbin usr/share usr/local/bin usr/local/captiveportal usr/local/lib usr/local/sbin/.libs usr/local/www usr/share/misc boot/kernel
  
 # insert svn files to filesystem
-	cp -r $MW_BUILDPATH/freebsd8/phpconf/rc.* etc/
-	cp -r $MW_BUILDPATH/freebsd8/phpconf/inc etc/
-	cp -r $MW_BUILDPATH/freebsd8/etc/* etc
-	cp -r $MW_BUILDPATH/freebsd8/webgui/ usr/local/www/
-	cp -r $MW_BUILDPATH/freebsd8/captiveportal usr/local/
+	cp -r $MW_BUILDPATH/freebsd9/phpconf/rc.* etc/
+	cp -r $MW_BUILDPATH/freebsd9/phpconf/inc etc/
+	cp -r $MW_BUILDPATH/freebsd9/etc/* etc
+	cp -r $MW_BUILDPATH/freebsd9/webgui/ usr/local/www/
+	cp -r $MW_BUILDPATH/freebsd9/captiveportal usr/local/
  
 # set permissions
 	chmod -R 0755 usr/local/www/* usr/local/captiveportal/*
@@ -45,34 +45,34 @@ fi
  
 # configure build information
 	date > etc/version.buildtime
-	VERSION=`cat $MW_BUILDPATH/freebsd8/version`
+	VERSION=`cat $MW_BUILDPATH/freebsd9/version`
 
-	if [ -r $MW_BUILDPATH/freebsd8/svnrevision ]; then
+	if [ -r $MW_BUILDPATH/freebsd9/svnrevision ]; then
 		# replace character '%' in version with repository revision
-		SVNREV=`cat $MW_BUILDPATH/freebsd8/svnrevision`
+		SVNREV=`cat $MW_BUILDPATH/freebsd9/svnrevision`
 		VERSION=${VERSION/\%/$SVNREV}
 	fi
 	
 	echo $VERSION > etc/version
  
 # get and set current default configuration
-	cp $MW_BUILDPATH/freebsd8/phpconf/config.xml conf.default/config.xml
+	cp $MW_BUILDPATH/freebsd9/phpconf/config.xml conf.default/config.xml
  
 # insert termcap and zoneinfo files
 	cp /usr/share/misc/termcap usr/share/misc
  
 # do zoneinfo.tgz and dev fs
 	cd tmp 
-	cp $MW_BUILDPATH/freebsd8/build/files/zoneinfo.tgz $MW_BUILDPATH/m0n0fs/usr/share
-	perl $MW_BUILDPATH/freebsd8/build/minibsd/mkmini.pl $MW_BUILDPATH/freebsd8/build/minibsd/m0n0wall.files  / $MW_BUILDPATH/m0n0fs/
+	cp $MW_BUILDPATH/freebsd9/build/files/zoneinfo.tgz $MW_BUILDPATH/m0n0fs/usr/share
+	perl $MW_BUILDPATH/freebsd9/build/minibsd/mkmini.pl $MW_BUILDPATH/freebsd9/build/minibsd/m0n0wall.files  / $MW_BUILDPATH/m0n0fs/
 
 # create php.ini	
-	cp $MW_BUILDPATH/freebsd8/build/files/php.ini $MW_BUILDPATH/m0n0fs/usr/local/lib/php.ini
+	cp $MW_BUILDPATH/freebsd9/build/files/php.ini $MW_BUILDPATH/m0n0fs/usr/local/lib/php.ini
 
 # create login.conf
-	cp $MW_BUILDPATH/freebsd8/build/files/login.conf $MW_BUILDPATH/m0n0fs/etc/
+	cp $MW_BUILDPATH/freebsd9/build/files/login.conf $MW_BUILDPATH/m0n0fs/etc/
 	
 # create missing etc files
-	tar -xzf $MW_BUILDPATH/freebsd8/build/files/etcadditional.tgz -C $MW_BUILDPATH/m0n0fs/
+	tar -xzf $MW_BUILDPATH/freebsd9/build/files/etcadditional.tgz -C $MW_BUILDPATH/m0n0fs/
 
 echo "Finished Stage 1"
