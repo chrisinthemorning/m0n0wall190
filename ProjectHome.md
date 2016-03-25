@@ -1,0 +1,1 @@
+this is m0n0wall test on freebsd 9.0
